@@ -2,41 +2,45 @@
 <html>
 <head>
   <title>Cat Component</title>
-  <style>
-	html {font-size: 50px !important;}
-    body {padding: 10px 0;}
-	.logo {position:fixed; top: 0; right: 0; display: block; margin: 0.1rem;}
-    .logo img {width: 1.8rem;}
-	.list {list-style-position: inside; list-style-type: katakana; font-size: .4rem;}
-  </style>
   <link rel="stylesheet" href="/highlight.css">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <style>
+    html {font-size: 50px !important;}
+    body {padding: 10px 0;}
+    .logo {position:fixed; top: 0; right: 0; display: block; margin: 0.1rem;}
+    .logo img {width: 1.8rem;}
+    .list {list-style-position: inside; list-style-type: katakana; font-size: .4rem;}
+  </style>
 </head>
 <body>
     <a href="https://github.com/MYFE-React-Component" class="logo"><img src="/logo.jpg" /></a>
-	<div class="container">
+    <div class="container">
+      <div class="panel panel-default">
+        <ul class="panel-body list-group list">
+        <% navList.forEach(function(nav) { %>
+          <li><a href=<%- nav %>><%- nav %></a></li>
+        <% }) %>
+        </ul>
+      </div>
+      <% if(readme !== '') { %>
+        <pre><code><%= readme %></code></pre>
+      <% } %>
+      <% if(script) { %>
         <div class="panel panel-default">
-            <ul class="panel-body list-group list">
-            <% navList.forEach(function(nav) { %>
-                <li><a href=<%- nav %>><%- nav %></a></li>
-            <% }) %>
-            </ul>
+          <div class="panel-body">
+            <div id="react-component-example"></div>
+          </div>
         </div>
-        <% if(readme !== '') { %>
-		<pre><code><%= readme %></code></pre>
-        <% } %>
-        <% if(script !== '') { %>
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div id="component-example-<%= script %>"></div>
-            </div>
-        </div>
-        <script src="/<%= script %>.js"></script>
-        <% } %>
-        <% if(code !== '') { %>
+        <script>
+          window.Component = '<%= script %>';
+        </script>
+        <script src="/index.js"></script>
+      <% } %>
+      <% if(code) { %>
         <pre><code><%= code %></code></pre>
-        <% } %>
-	</div>
+      <% } %>
+    </div>
+
     <script src="http://127.0.0.1:35729/livereload.js"></script>
 </body>
 </html>

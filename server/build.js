@@ -5,12 +5,15 @@ var gulp = require('gulp');
 var runSequence = require('run-sequence');
 var LiveReloadPlugin = require('webpack-livereload-plugin');
 
-var cwd = process.cwd(),
-    paths = {
-        script: path.join(cwd, '/examples/**/*.jsx'),
-        scriptDest: path.resolve(__dirname, '../build/')
-    },
-    webpackConfig = {
+var cwd = process.cwd();
+var paths = {
+      src: path.resolve(__dirname, '../src/index.jsx'),
+      srcDest: path.resolve(__dirname, '../src/'),
+      script: path.join(cwd, '/examples/**/*.jsx'),
+      scriptDest: path.resolve(__dirname, '../build/')
+    };
+
+var webpackConfig = {
         watch: true,
         module: {
             loaders: [
@@ -19,24 +22,20 @@ var cwd = process.cwd(),
             ]
         },
         output: {
-            filename: '[name].js'
+          filename: '[name].js'
+        },
+        resolve: {
+          extensions: ['', '.js', '.jsx'],
         },
         devtool: 'source-map',
         plugins:[new LiveReloadPlugin()]
     };
 
-gulp.task('webpack', function(){
-    gulp.src(paths.script)
-        .pipe(named())
-        .pipe(webpack(webpackConfig))
-        .pipe(gulp.dest(paths.scriptDest));
+gulp.task('webpack', function() {
+  gulp.src(paths.src)
+    .pipe(named())
+    .pipe(webpack(webpackConfig))
+    .pipe(gulp.dest(paths.scriptDest));
 });
 
 runSequence(['webpack']);
-
-
-
-
-
-
-

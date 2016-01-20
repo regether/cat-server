@@ -1,17 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 
-class Simple extends React.Component {
-    alert() {
-        console.log(arguments);
-        alert('alert some test text');
-    }
-
+export default class Simple extends Component {
     render() {
-        return (
-            <div onClick={this.alert}>This is a simple example</div>
-        );
+        return <div>举个栗子</div>;
     }
 }
-
-ReactDOM.render(<Simple />, document.getElementById('component-example-simple'));

@@ -1,6 +1,6 @@
 {
   "name": "regether-rc-server",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "react component develop server",
   "main": "index.js",
   "scripts": {
@@ -10,13 +10,17 @@
     "cat-server": "./index.js",
     "pre-publish": "./server/pre-publish.js"
   },
-  "contributors": [{
-    "name": "liujing11"
-  }, {
-    "name": "yanweiqing"
-  }, {
-    "name": "liquanshui"
-  }],
+  "contributors": [
+    {
+      "name": "liujing11"
+    },
+    {
+      "name": "yanweiqing"
+    },
+    {
+      "name": "liquanshui"
+    }
+  ],
   "license": "MIT",
   "peerDependencies": {
     "myui-core": "^0.1.0",
@@ -28,27 +32,40 @@
     "style-loader": "^0.13.0"
   },
   "dependencies": {
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "css-loader": "^0.21.0",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.3.0",
+    "gulp-clean": "^0.3.1",
     "gulp-less": "^3.0.3",
     "gulp-webpack": "^1.5.0",
     "highlight": "^0.2.4",
+    "history": "^1.17.0",
     "koa": "^1.0.0",
     "koa-router": "^5.1.2",
     "koa-static": "^1.4.9",
-    "marked": "^0.3.5",
-    "run-sequence": "^1.1.4",
-    "vinyl-named": "^1.1.0",
-    "webpack": "^1.12.2",
-    "webpack-livereload-plugin": "^0.4.0",
-    "babel-core": "^5.8.25",
-    "babel-loader": "^5.3.2",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
-    "css-loader": "^0.21.0",
-    "style-loader": "^0.13.0",
+    "lodash": "^3.10.1",
+    "marked": "^0.3.5",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "lodash": "^3.10.1"
-  }
+    "react-router": "^1.0.3",
+    "run-sequence": "^1.1.4",
+    "style-loader": "^0.13.0",
+    "vinyl-named": "^1.1.0",
+    "webpack": "^1.12.11",
+    "webpack-livereload-plugin": "^0.4.0"
+  },
+  "files": [
+    "assets/",
+    "bin",
+    "examples/",
+    "index.js",
+    "layout.html",
+    "package.json",
+    "server/",
+    "src/"
+  ]
 }
