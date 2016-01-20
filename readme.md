@@ -1,29 +1,30 @@
 # ReadME
 
-为React Component提供Server服务
+Develop tool for developing React Component
 
-Remember to follow User-Guide of cat-component
+Remember to follow File Structure Guide of cat-component below
 
+## File Structure Guide
+
+	-assets/ // less files
+	-examples/
+	-src/ //put your component here
+	-readme.md
+	-package.json
 
 ## Start Server
 
 npm install cat-server
 
-node node_modules/.bin/cat-server   //启动服务(默认端口7777)
+node node_modules/.bin/cat-server   // default port 7777
 
 ## Publish
 
-node node_modules/.bin/pre-publish  //将src目录下的es6文件编译成es5，目标目录dist
+node node_modules/.bin/pre-publish  // Compile files
 
 npm publish
 
-## File Structure
 
-	-assets
-	-examples
-	-src	     //put your component here
-	-readme.md
-	-package.json
 
 ## examples/simple.jsx
 
@@ -61,7 +62,8 @@ You can add these in your package.json:
 ```
 "scripts" : {
 	"dev": "node node_modules/.bin/cat-server",
-	"build": "node node_modules/.bin/build"
+	"build": "node node_modules/.bin/build",
+  "pre-publish": "node node_modules/.bin/pre-publish"
 }
 ```
 Then，you can run instead

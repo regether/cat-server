@@ -11,9 +11,8 @@ var  marked       = require('marked');
 var app = koa(),
     router = koarouter();
 
-var __root = function (dir) { return path.join(path.dirname(__dirname), dir); }
-
-
+var __root = function (dir) { return path.join(path.dirname(__dirname), dir); };
+var layout = fs.readFileSync(__root('layout.html'));
 var files = fs.readdirSync('examples'),
     jsxReg = new RegExp('.jsx$'),
     navList = files.filter(function (filename) {
@@ -23,45 +22,45 @@ var files = fs.readdirSync('examples'),
     });
 navList.unshift('/readme');
 
-// var layout = fs.readFileSync(__root('layout.html'));
-
 //readme
 router.get('/readme', function *(next) {
-    var layout = fs.readFileSync(__root('layout.html')),
-        readme = fs.readFileSync('readme.md', 'utf8'),
-        data = {
-            navList: navList,
-            script: '',
-            readme: marked(readme),
-            code: ''
-        };
-    this.body = _.template(layout)(data);
+  var readme = fs.readFileSync('readme.md', 'utf8');
+  var data = {
+        navList: navList,
+        script: false,
+        readme: marked(readme),
+        code: false
+      };
+  this.body = _.template(layout)(data);
 });
 
 //examples
 router.get('/examples/:example', function *(next) {
-    var layout = fs.readFileSync(__root('layout.html')),
-        readmeFileName = `${process.cwd()}/examples/${this.params.example}.md`,
-        readme = fs.existsSync(readmeFileName) ? fs.readFileSync(readmeFileName, 'utf8') : '',
-        data = {
-            navList: navList,
-            script: this.params.example,
-            readme: marked(readme),
-            code: highlight(fs.readFileSync(`${process.cwd()}/examples/${this.params.example}.jsx`, 'utf8'))
-        };
+  var example = this.params.example;
+  var cwd = process.cwd();
+  var filePath = `${cwd}/examples/${example}.jsx`;
+  var readmeFileName = `${cwd}/examples/${example}.md`;
+  var readme = fs.existsSync(readmeFileName) ? fs.readFileSync(readmeFileName, 'utf8') : '';
+  var data = {
+        navList: navList,
+        script: example,
+        readme: marked(readme),
+        code: highlight(fs.readFileSync(filePath, 'utf8'))
+    };
 
-    this.body =  _.template(layout)(data);
+  this.body =  _.template(layout)(data);
 });
 
 //redirect
 router.redirect('/', '/readme');
 
 //process static file service
-app.use(koastatic(__root('build')));
 app.use(koastatic(__root('assets')));
+app.use(koastatic(__root('build')));
+app.use(koastatic(__root('src')));
 
 app.use(router.routes());
 
 var port = process.env.PORT || 7777;
 app.listen(port);
-console.log('start server on ' + port);
+console.log('Server started on ' + port);
