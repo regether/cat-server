@@ -1,13 +1,13 @@
 {
-  "name": "regether-rc-server",
-  "version": "0.1.1",
-  "description": "react component develop server",
+  "name": "rs-server",
+  "version": "0.1.0",
+  "description": "Develop server for React component",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "bin": {
-    "cat-server": "./index.js",
+    "rs-server": "./index.js",
     "pre-publish": "./server/pre-publish.js"
   },
   "contributors": [
