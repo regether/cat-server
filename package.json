@@ -1,6 +1,6 @@
 {
   "name": "rs-server",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Develop server for React component",
   "main": "index.js",
   "scripts": {
