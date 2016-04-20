@@ -9,36 +9,43 @@
     body {padding: 10px 0;}
     .logo {position:fixed; top: 0; right: 0; display: block; margin: 0.1rem;}
     .logo img {width: 0.8rem;}
-    .list {list-style-position: inside; list-style-type: katakana; font-size: .4rem;}
+    .demo-header-list {list-style-position: inside; list-style-type: katakana; font-size: .4rem; margin-bottom: 0;}
   </style>
 </head>
 <body>
     <a href="https://github.com/react-salt" class="logo"><img src="/logo.png" /></a>
-    <div class="container">
-      <div class="panel panel-default">
-        <ul class="panel-body list-group list">
-        <% navList.forEach(function(nav) { %>
-          <li><a href=<%- nav %>><%- nav %></a></li>
-        <% }) %>
-        </ul>
-      </div>
-      <% if(readme !== '') { %>
-        <pre><code><%= readme %></code></pre>
-      <% } %>
-      <% if(script) { %>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div id="react-component-container"></div>
+    <div class="container-fluid">
+          <div class="salt-panel salt-panel-default">
+            <ul class="salt-panel-body list-group demo-header-list">
+            <% navList.forEach(function(nav) { %>
+              <li><a href=<%- nav %>><%- nav %></a></li>
+            <% }) %>
+            </ul>
           </div>
+        <div class="row">
+            <div class="col-md-12">
+              <% if(script) { %>
+                <div class="salt-panel salt-panel-default">
+                  <div class="salt-panel-body">
+                    <div id="react-component-container"></div>
+                  </div>
+                </div>
+                <script>
+                  window.Component = '<%= script %>';
+                </script>
+                <script src="/index.js"></script>
+              <% } %>
+            </div>
+            <div class="col-md-12">
+              <% if(readme !== '') { %>
+                <pre><code><%= readme %></code></pre>
+              <% } %>
+
+              <% if(code) { %>
+                <pre><code><%= code %></code></pre>
+              <% } %>
+            </div>
         </div>
-        <script>
-          window.Component = '<%= script %>';
-        </script>
-        <script src="/index.js"></script>
-      <% } %>
-      <% if(code) { %>
-        <pre><code><%= code %></code></pre>
-      <% } %>
     </div>
 
     <script src="http://127.0.0.1:35729/livereload.js"></script>

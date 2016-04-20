@@ -1,8 +1,13 @@
 # ReadME
 
-Develop tool for developing React Component
+Develop tool for React Component Development
 
 Remember to follow File Structure Guide of react-salt-component below
+
+## Feature
+
+* support jsx
+* support es6
 
 ## File Structure Guide
 

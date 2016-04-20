@@ -24,7 +24,7 @@ navList.unshift('/readme');
 
 //readme
 router.get('/readme', function *(next) {
-  var readme = fs.readFileSync('readme.md', 'utf8');
+  var readme = fs.readFileSync('src/readme.md', 'utf8');
   var data = {
         navList: navList,
         script: false,
@@ -37,15 +37,24 @@ router.get('/readme', function *(next) {
 //examples
 router.get('/examples/:example', function *(next) {
   var example = this.params.example;
-  var cwd = process.cwd();
-  var filePath = `${cwd}/examples/${example}.js`;
-  var readmeFileName = `${cwd}/examples/${example}.md`;
-  var readme = fs.existsSync(readmeFileName) ? fs.readFileSync(readmeFileName, 'utf8') : '';
+  var filePath = `${process.cwd()}/examples/${example}.js`;
+  var readme = fs.readFileSync(filePath, 'utf8');
+  var comments = [];
+  var codes = [];
+
+  readme.split('*/').forEach(function(item) {
+    var tmp = item.split('/*');
+    comments.push(tmp[1]);
+    if (tmp[0] !== '') {
+        codes.push(tmp[0]);
+    }
+  });
+
   var data = {
         navList: navList,
         script: example,
-        readme: marked(readme),
-        code: highlight(fs.readFileSync(filePath, 'utf8'))
+        readme: marked(comments.join('')),
+        code: highlight(codes.join(''))
     };
 
   this.body =  _.template(layout)(data);

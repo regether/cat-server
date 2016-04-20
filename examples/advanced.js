@@ -1,3 +1,8 @@
+/*
+## Write Something here
+
+You can write guides for users here
+*/
 import React, { Component } from 'react';
 
 export default class Advanced extends Component {
