@@ -1,10 +1,11 @@
 {
   "name": "rs-server",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Develop server for React component",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js"
+    "dev": "node index.js",
+    "pre-publish": "node server/pre-publish.js"
   },
   "bin": {
     "rs-server": "./index.js",
@@ -39,6 +40,7 @@
     "gulp-babel": "^5.3.0",
     "gulp-clean": "^0.3.1",
     "gulp-less": "^3.0.3",
+    "gulp-template": "^4.0.0",
     "gulp-webpack": "^1.5.0",
     "highlight": "^0.2.4",
     "history": "^1.17.0",

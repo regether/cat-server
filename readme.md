@@ -65,4 +65,6 @@ npm run dev
 npm run build
 ```
 
-<%= comments %>
+
+    组件注释请写在src文件夹下的组件内
+
