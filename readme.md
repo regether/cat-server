@@ -28,9 +28,8 @@ npm publish
 
 ```
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-class Example extends React.Component {
+export default class Example extends React.Component {
     constructor(props) {
         super(props);
         this.onClick = this.onClick.bind('this');
@@ -43,16 +42,15 @@ class Example extends React.Component {
     }
 };
 
-ReactDOM.render(<Example />, document.getElementById('component-example-simple'));
 ```
 
 You can add these in your package.json:
 
 ```
 "scripts" : {
-	"dev": "node node_modules/.bin/cat-server",
+    "dev": "node node_modules/.bin/cat-server",
 	"build": "node node_modules/.bin/build",
-  "pre-publish": "node node_modules/.bin/pre-publish"
+    "pre-publish": "node node_modules/.bin/pre-publish"
 }
 ```
 Then，you can run instead
