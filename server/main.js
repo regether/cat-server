@@ -14,9 +14,9 @@ var app = koa(),
 var __root = function (dir) { return path.join(path.dirname(__dirname), dir); };
 var layout = fs.readFileSync(__root('layout.html'));
 var files = fs.readdirSync('examples'),
-    jsxReg = new RegExp('.jsx$'),
+    jsReg = new RegExp('.js$'),
     navList = files.filter(function (filename) {
-        return jsxReg.test(filename);
+        return jsReg.test(filename);
     }).map(function (filename) {
         return `/examples/${filename.split('.')[0]}`;
     });
@@ -38,7 +38,7 @@ router.get('/readme', function *(next) {
 router.get('/examples/:example', function *(next) {
   var example = this.params.example;
   var cwd = process.cwd();
-  var filePath = `${cwd}/examples/${example}.jsx`;
+  var filePath = `${cwd}/examples/${example}.js`;
   var readmeFileName = `${cwd}/examples/${example}.md`;
   var readme = fs.existsSync(readmeFileName) ? fs.readFileSync(readmeFileName, 'utf8') : '';
   var data = {

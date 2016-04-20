@@ -5,12 +5,12 @@ var gulp = require('gulp');
 var runSequence = require('run-sequence');
 var LiveReloadPlugin = require('webpack-livereload-plugin');
 
-var cwd = process.cwd();
+var cwd = process.cwd();    // 执行命令所在目录
 var paths = {
-      src: path.resolve(__dirname, '../src/index.jsx'),
-      srcDest: path.resolve(__dirname, '../src/'),
-      script: path.join(cwd, '/examples/**/*.jsx'),
-      scriptDest: path.resolve(__dirname, '../build/')
+      remote: path.resolve(__dirname, '../src/index.jsx'),  // index源文件
+      src: path.join(cwd, '/node_modules/rs-server-static/build'),    // index拷贝目录
+      script: path.join(cwd, '/examples/**/*.js'),  // 需要监听的examples文件
+      scriptDest: path.resolve(__dirname, '../build/')  // 开发编译文件
     };
 
 var webpackConfig = {
@@ -31,11 +31,16 @@ var webpackConfig = {
         plugins:[new LiveReloadPlugin()]
     };
 
+gulp.task('initCopy', function() {
+    gulp.src(paths.remote)
+        .pipe(gulp.dest(paths.src));
+});
+
 gulp.task('webpack', function() {
-  gulp.src(paths.src)
+  gulp.src(path.join(paths.src, 'index.jsx'))
     .pipe(named())
     .pipe(webpack(webpackConfig))
     .pipe(gulp.dest(paths.scriptDest));
 });
 
-runSequence(['webpack']);
+runSequence(['initCopy', 'webpack']);
