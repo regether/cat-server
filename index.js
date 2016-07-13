@@ -1,4 +1,4 @@
-#!/usr/bin/env_node
+#!/usr/bin/env node
 'use strict;'
 require('babel-register')({
     "presets": [
@@ -13,6 +13,4 @@ require('babel-register')({
 
 require("babel-polyfill");
 
-var app = require('./bin/main.js');
-
-app();
+require('./bin/main.js')();

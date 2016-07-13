@@ -1,27 +1,20 @@
 {
-  "name": "rs-server",
-  "version": "0.1.4",
-  "description": "Develop server for React component",
+  "name": "rs-kit",
+  "version": "0.0.1",
+  "description": "Develop Tools for React component",
   "main": "index.js",
-  "scripts": {
-    "dev": "node index.js",
-    "pre-publish": "node server/pre-publish.js"
-  },
   "bin": {
-    "rs-server": "./index.js",
-    "pre-publish": "./server/pre-publish.js"
+    "rs-kit": "./index.js"
   },
-  "contributors": [
-    {
-      "name": "liujing11"
-    },
-    {
-      "name": "yanweiqing"
-    },
-    {
-      "name": "liquanshui"
-    }
-  ],
+  "contributors": [{
+    "name": "liujing"
+  }, {
+    "name": "yanweiqing"
+  }, {
+    "name": "liquanshui"
+  }, {
+    "name": "zhangmengxuan"
+  }],
   "license": "MIT",
   "dependencies": {
     "autoprefixer": "^6.3.6",
