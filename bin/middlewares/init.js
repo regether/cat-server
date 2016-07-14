@@ -57,6 +57,7 @@ const init = (name) => {
 
     if (!name) {
         logger.danger('-> ! sir: we need a project name !');
+        return;
     }
 
     runSequence('clone', 'init:readme_package', 'init:install');

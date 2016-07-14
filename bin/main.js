@@ -1,6 +1,7 @@
 import logger from './extensions/logger';
 import information from './middlewares/information';
 import init from './middlewares/init';
+import update from './middlewares/update';
 import option from './option/orders.json';
 
 const main = () => {
@@ -32,7 +33,7 @@ const main = () => {
             logger('test');
             break;
         case 'update':
-            logger('update');
+            update(args);
             break;
         case '-v':
         case '--version':
