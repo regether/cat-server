@@ -1,0 +1,8 @@
+{
+    "init": "          Project Init",
+    "dev": "           Developer Mode",
+    "prepublish": "    Prepublish Order",
+    "test": "          UI Test",
+    "update": "        Reget Some Files From Remote",
+    "-v, --version": " Check Current Version"
+}

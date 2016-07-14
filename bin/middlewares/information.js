@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 import path from 'path';
 import ch from 'child_process';
-import config from '../../package.json';
 import logger from '../extensions/logger';
+import config from '../../package.json';
+import option from '../option/orders.json';
 
 const kitDir = __dirname.slice(0, -16);
 const exec = ch.exec;
-
 
 const logCurrentVersion = () => {
     logger('You are using %s@%s\n     from             %s\n', config.name, config.version, kitDir);
@@ -15,13 +15,10 @@ const logCurrentVersion = () => {
 const logList = () => {
     logger('Usage: rs-kit <command> [arguments]\n');
     logger('Commands:');
-    logger('     init <name>');
-    logger('     dev');
-    logger('     prepublish');
-    logger('     test');
-    logger('     update');
-    logger('     pwd');
-    logger('     -v, --version\n');
+    for (let i in option) {
+        logger('    ', i, option[i]);
+    }
+    logger('');
 }
 
 const logVersionInfo = () => {
@@ -34,7 +31,7 @@ const logVersionInfo = () => {
     })
 }
 
-let info = (type) => {
+const info = (type) => {
     if (type === 'info') {
         logList();
     }
