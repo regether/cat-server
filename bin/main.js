@@ -1,7 +1,5 @@
-import gutil from 'gulp-util';
 import logger from './extensions/logger';
-
-import information from './middlewares/information.js';
+import information from './middlewares/information';
 
 const main = () => {
     let args = process.argv.splice(2);
@@ -12,7 +10,8 @@ const main = () => {
     logger.in(5);
 
     if (currentDir === kitDir) {
-        gutil.log(gutil.colors.red('-> Do not run any order under the kit dir'));
+        logger.danger('-> Do not run any order under the kit dir');
+        return;
     }
 
     switch(order) {
@@ -31,12 +30,10 @@ const main = () => {
         case 'update':
             logger('update');
             break;
-        case 'pwd':
-            information('pwd');
-            break;
         case '-v':
         case '--version':
             information('version');
+            break;
         default:
             information('info');
     }
