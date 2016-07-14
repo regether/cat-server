@@ -2,8 +2,8 @@ import LiveReloadPlugin from 'webpack-livereload-plugin';
 import webpack from './webpack.base.js';
 
 const build = (entry, output) => {
-    var webpackBase = webpack(entry, output);
-    var webpackConfig = {
+    let webpackBase = webpack(entry, output);
+    let webpackConfig = {
         watch: true,
         devtool: 'source-map',
         plugins:[new LiveReloadPlugin()]

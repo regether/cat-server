@@ -1,5 +1,5 @@
-var projectConf;
-var defaultConf = {
+let projectConf;
+let defaultConf = {
     externals: [{
         'react': {
           amd: 'react',
@@ -17,17 +17,17 @@ var defaultConf = {
 };
 
 try {
-    projectConf = require(path.resolve(process.cwd(), './zent.webpack.config.js'));
+    projectConf = require(path.resolve(process.cwd(), './rs_webpack_option.js'));
 } catch (ex) {
     projectConf = defaultConf;
 }
 
-module.exports = function(entry, output) {
-    var arr = output.split('/');
-    var lab = arr[arr.length - 3];
-    var webpackBase = require('./webpack.base.js')(entry, output);
+const pre = (entry, output) => {
+    let arr = output.split('/');
+    let lab = arr[arr.length - 3];
+    let webpackBase = require('./webpack.base.js')(entry, output);
 
-    var webpackConfig = {
+    let webpackConfig = {
         output: {
           filename: 'main.js',
           path: output,
@@ -38,3 +38,5 @@ module.exports = function(entry, output) {
 
     return Object.assign(webpackBase, webpackConfig, projectConf);
 };
+
+export default pre;

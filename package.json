@@ -1,6 +1,6 @@
 {
   "name": "rs-kit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Develop Tools for React component",
   "main": "index.js",
   "bin": {
