@@ -3,7 +3,7 @@ import path from 'path';
 import ch from 'child_process';
 import logger from '../extensions/logger';
 import config from '../../package.json';
-import option from '../option/orders.json';
+import option from '../options/orders.json';
 
 const kitDir = __dirname.slice(0, -16);
 const exec = ch.exec;

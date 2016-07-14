@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zent Kit - Develop Tools for React</title>
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/react-zent-ui.css">
+  <link rel="stylesheet" href="/css/layout.css">
+</head>
+<body>
+<div class="zent-panel zent-panel-default zent-row demo-wrapper">
+    <ul class="zent-panel-body list-group demo-header-list zent-col zent-col-24">
+        <% navList.forEach(function(nav) { %>
+        <li class="zent-col zent-col-10 zent-col-offset-2">
+            <a href=<%- nav %>>
+                <%- nav %>
+            </a>
+        </li>
+        <% }) %>
+    </ul>
+</div>
+<div class="zent-row">
+    <% if(script) { %>
+    <div class="zent-col zent-col-11 zent-col-offset-1">
+        <div id="react-component-container"></div>
+        <script>
+            window.Component = '<%= script %>';
+        </script>
+        <script src="/main.js"></script>
+    </div>
+    <% } %>
+    <div class="zent-col <%= script ? 'zent-col-12' : 'zent-col-offset-1 zent-col-22' %>">
+        <% if(readme !== '') { %>
+        <div class="wrapper-marked">
+            <%= readme %>
+        </div>
+        <% } %>
+
+        <% if(code) { %>
+        <pre class="wrapper-marked">
+            <%= code %>
+        </pre>
+        <% } %>
+    </div>
+</div>
+<script src="http://127.0.0.1:35729/livereload.js"></script>
+</body>
+</html>

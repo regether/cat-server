@@ -1,8 +1,10 @@
 import logger from './extensions/logger';
 import information from './middlewares/information';
 import init from './middlewares/init';
-import update from './middlewares/update';
-import option from './option/orders.json';
+import get from './middlewares/get';
+import dev from './middlewares/dev';
+
+import option from './options/orders.json';
 
 const main = () => {
     let args = process.argv.splice(2);
@@ -24,7 +26,7 @@ const main = () => {
             init(args[0]);
             break;
         case 'dev':
-            logger('logger');
+            dev();
             break;
         case 'prepublish':
             logger('pre');
@@ -32,8 +34,8 @@ const main = () => {
         case 'test':
             logger('test');
             break;
-        case 'update':
-            update(args);
+        case 'get':
+            get(args);
             break;
         case '-v':
         case '--version':
